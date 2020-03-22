@@ -27,7 +27,7 @@ SECRET_KEY = 'ija0d&121)tp_x*)_1kyswan(=wav@#xk-i=y4qd@*5%#v=n&c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['51.158.163.187']
 
 
 # Application definition
