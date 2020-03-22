@@ -1,0 +1,14 @@
+{% extends "dappx/base.html" %}
+{% block body_block %}
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Register your project Here</h1>
+      <h3>Just fill out the form.</h3>
+<form enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        {{ project_form.as_p }}
+        <input type="submit" name="" value="create_new_project">
+      </form>
+    </div>
+  </div>
+{% endblock %}
