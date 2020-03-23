@@ -10,7 +10,19 @@
         <div class="container">
           <div class="row">
           {% for i in projects %}
-            <li><a class="navbar-brand" href="{% url 'index' %}">{{ i.project_name }}</a></li>
+            <div class="col-md-4">
+              <div class="card mb-4 shadow-sm">
+                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="{{ i.project_picture }}" data-holder-rendered="true">
+                <div class="card-body">
+                  <p class="card-text">{{ i.project_name }}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                    <a href="http://127.0.0.1:8000/dappx/project/{{ i.project_name }}/" class="btn btn-sm btn-outline-secondary">Смотреть</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           {% endfor %}
           </div>
         </div>

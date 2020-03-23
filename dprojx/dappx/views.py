@@ -21,6 +21,11 @@ def user_logout(request):
     print(3)
     logout(request)
     return HttpResponseRedirect(reverse('index'))
+def project(request,name):
+    project = ProjectInfo.objects.all()
+    for i in project:
+        if(i.project_name == name):
+            return render(request,'dappx/project.html', {'project':i})
 def register(request):
     print(1)
     registered = False
@@ -30,13 +35,8 @@ def register(request):
             user = user_form.save()
             user.set_password(user.password)
             user.save()
-            if 'profile_pic' in request.FILES:
-                print('found it')
-                profile.profile_pic = request.FILES['profile_pic']
-            profile.save()
-            registered = True
         else:
-            print(user_form.errors,profile_form.errors)
+            print(user_form.errors)
     else:
         user_form = UserForm()
     return render(request,'dappx/registration.html',
@@ -62,13 +62,16 @@ def user_login(request):
         return render(request, 'dappx/login.html', {})
 
 def create_new_project(request):
-    if request.method == 'POST':
-        project_form = ProjectForm(data=request.POST)
-        if project_form.is_valid():
-            project = project_form.save()
-            project.project_picture = request.FILES['project_picture']
-            project.save()
-            return HttpResponseRedirect(reverse('index'))
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            project_form = ProjectForm(data=request.POST)
+            if project_form.is_valid():
+                project = project_form.save()
+                project.project_picture = request.FILES['project_picture']
+                project.save()
+                return HttpResponseRedirect(reverse('index'))
+        else:
+            project_form = ProjectForm()
+            return render(request,'dappx/new_project.html',{'project_form':project_form,})
     else:
-        project_form = ProjectForm()
-        return render(request,'dappx/new_project.html',{'project_form':project_form,})
+        return HttpResponse("You are not loged in")

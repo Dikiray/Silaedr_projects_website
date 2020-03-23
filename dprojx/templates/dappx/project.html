@@ -1,0 +1,10 @@
+{% extends "dappx/base.html" %}
+{% block body_block %}
+<div class="album py-5 bg-light">
+  <div class="container">
+    <div class="row">
+       <p class="card-text">{{project.project_text|safe}}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

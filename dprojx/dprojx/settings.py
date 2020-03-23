@@ -14,8 +14,8 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
-STATIC_DIR = os.path.join(BASE_DIR,'static')
+TEMPLATE_DIR = os.path.join(BASE_DIR,'templates/')
+STATIC_DIR = os.path.join(BASE_DIR,'static/')
 MEDIA_DIR = os.path.join(BASE_DIR,'media/')
 
 # Quick-start development settings - unsuitable for production
@@ -27,8 +27,8 @@ SECRET_KEY = 'ija0d&121)tp_x*)_1kyswan(=wav@#xk-i=y4qd@*5%#v=n&c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['51.158.163.187']
-
+ALLOWED_HOSTS = []
+#'51.158.163.187'
 
 # Application definition
 
