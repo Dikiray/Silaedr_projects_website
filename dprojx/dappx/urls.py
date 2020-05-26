@@ -6,6 +6,7 @@ from django.urls import path
 app_name = 'dappx'
 # Be careful setting the name to just /login use userlogin instead!
 urlpatterns=[
+    path('delete_project/<str:name>/', views.delete_project),
     path('project/<str:name>/',views.project),
     url('create_new_project/',views.create_new_project,name="create_new_project"),
     url('register/',views.register,name='register'),

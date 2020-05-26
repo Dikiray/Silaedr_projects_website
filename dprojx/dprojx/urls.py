@@ -24,7 +24,6 @@ from dappx import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^$',views.index,name='index'),
-    url('special/',views.special,name='special'),
     url('dappx/',include('dappx.urls')),
     url('logout/', views.user_logout, name='logout'),
     path('summernote/', include('django_summernote.urls')),
