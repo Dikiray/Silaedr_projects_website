@@ -25,8 +25,10 @@ def register(request):
             user = user_form.save()
             user.set_password(user.password)
             user.save()
+            return HttpResponseRedirect(reverse('index'))
         else:
             print(user_form.errors)
+            return HttpResponse("Форма была не полностью заполнена или такой пользователь уже существует")
     else:
         user_form = UserForm()
     return render(request,'dappx/registration.html',
@@ -75,4 +77,4 @@ def project(request,name):
 
 def delete_project(request,name):
     ProjectInfo.objects.filter(project_name=name).delete()
-    return HttpResponseRedirect(reverse('index'))     
+    return HttpResponseRedirect(reverse('index'))

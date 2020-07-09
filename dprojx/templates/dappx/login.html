@@ -1,19 +1,15 @@
 {% extends 'dappx/base.html' %}
 {% block body_block %}
-<div class="jumbotron">
-  <div class="container">
+  <div class="container col-md-5" style="position: relative; left: 50%; transform: translate(-50%, 0);">
     <div class="album py-5 bg-light">
-      <h1>Login here :</h1>
+      <h1 style="font-size:40px; text-align: center;">Login here</h1>
         <form method="post" action="{% url 'dappx:user_login' %}">
           {% csrf_token %}
-          {# A more "HTML" way of creating the login form#}
-          <label for="username">Логин:</label>
-          <input type="text" name="username" placeholder="Логин">
-          <label for="password">Пароль:</label>
-          <input type="password" name="password" placeholder="Пароль">
-          <input type="submit" class="btn btn-sm btn-outline-secondary" value="Войти">
+          <input type="text" class="form-control col-8" name="username" placeholder="Логин" style="height:35px; font-size:15px;position: relative; left: 50%; transform: translate(-50%, 0);">
+          <input type="password" class="form-control col-8" name="password" placeholder="Пароль" style="height:35px; font-size:15px;position: relative; left: 50%; transform: translate(-50%, 0);">
+          <br><br>
+          <input type="submit" class="btn btn-outline-success col-5" style="font-size:15px;position: relative; left: 50%; transform: translate(-50%, 0);" value="Войти">
           </form>
       </div>
     </div>
-</div>
 {% endblock %}

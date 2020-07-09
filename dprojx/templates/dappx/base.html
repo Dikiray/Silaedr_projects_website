@@ -2,36 +2,48 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Base</title>
-    <!-- Latest compiled and minified CSS -->
+    <title>Silaeder Projects</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
+    <link href="static/summernote/summernote.css" rel="stylesheet">
     <link href="static/album.css" rel="stylesheet">
-    <link rel="icon" href="https://getbootstrap.com/favicon.ico">
-    <link href="static/bootstrap.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
+    <link rel="icon" href="/media/silaeder.png">
+    <link href="/static/bootstrap.css" rel="stylesheet">
+    <script src="static/summernote/summernote.min.js"></script>
     <script src="static/holder.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script> $(document).ready(function() {$('#summernote').summernote();}); </script>
   </head>
   <body>
-    <div class="container">
-      <div class="jumbotron">
-        
-          <li><a href="{% url 'index' %}" class="btn btn-sm btn-outline-secondary">Проекты Силаэдра</a></li>
-          <li><a href="{% url 'dappx:register' %}" class="btn btn-sm btn-outline-secondary">Регистрация</a></li>
-          {% if user.is_authenticated %}
-          <li><a href="{% url 'dappx:create_new_project' %}" class="btn btn-sm btn-outline-secondary">Созлдать новый проэкт</a></li>
-          {% endif %}
-          {% if user.is_authenticated %}
-            <li><a href="{% url 'logout' %}" class="btn btn-sm btn-outline-secondary">Выйти</a></li>
-          {% else %}
-            <li><a href="{% url 'dappx:user_login' %}" class="btn btn-sm btn-outline-secondary">Войти</a></li>
-          {% endif %}
-
-      </div>
-    </div>
+    <header class="navbar navbar-expand bg-dark">
+            <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <img src="/media/silaeder.png" width="50" height="50" class="d-inline-block align-top" alt="">
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'index' %}" class="btn btn-dark" style="color:#F8F8FF; font-size:120%">Проекты Силаэдра</a>
+                </li>
+                <!--<li class="nav-item">
+                    <a href="{% url 'dappx:register' %}" class="btn btn-dark" style="color:#F8F8FF; font-size:120%">Регистрация</a>
+                </li>-->
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a href="{% url 'dappx:create_new_project' %}" class="btn btn-dark" style="color:#F8F8FF; font-size:120%">Создать новый проект</a>
+                        </li>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a href="{% url 'logout' %}" class="btn btn-dark" style="color:#F8F8FF; font-size:120%">Выйти</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a href="{% url 'dappx:user_login' %}" class="btn btn-dark" style="color:#F8F8FF; font-size:120%">Войти</a>
+                        </li>
+                    {% endif %}
+            </ul>
+            </div>
+    </header>
     <div class="container">
     {% block body_block %}
     {% endblock %}

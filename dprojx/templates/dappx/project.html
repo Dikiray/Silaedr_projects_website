@@ -2,13 +2,13 @@
 {% block body_block %}
 <div class="album py-5 bg-light">
   <div class="container">
-    <div class="row">
-       <p class="card-text">{{project.project_text|safe}}</p>
-       {% if user.is_authenticated %}
-       <div class="btn-group">
-         <a  class="btn btn-sm btn-outline-secondary" href="http://127.0.0.1:8000/dappx/delete_project/{{ project.project_name }}/">Удалить</a>
-       </div>
-       {% endif%}
+    <div class="jumbotron">
+        <p style="font-size:17px">Название проекта:{{ project.project_name }}</p>
+        <p style="font-size:17px">Направление:{{ project.project_direction }}</p>
+        <p style="font-size:17px">Авторы проекта:{{ project.project_creators }}</p>
+        <br><br>
+        <br>
+       <p class="card-text">{{ project.project_text|safe }}</p>
     </div>
   </div>
 </div>
