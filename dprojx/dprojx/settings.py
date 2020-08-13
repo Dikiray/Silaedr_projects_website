@@ -15,12 +15,9 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR,'templates/')
+STATIC_ROOT = "/home/Dancing/Silaedr_projects_website/static"
 STATIC_DIR = os.path.join(BASE_DIR,'static/')
 MEDIA_DIR = os.path.join(BASE_DIR,'media/')
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'ija0d&121)tp_x*)_1kyswan(=wav@#xk-i=y4qd@*5%#v=n&c'
 
@@ -125,7 +122,7 @@ STATICFILES_DIRS = [STATIC_DIR,]
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = "/media/"
 LOGIN_URL = "/dappx/user_login/"
-SUMMERNOTE_THEME = 'bs3'
+SUMMERNOTE_THEME = 'bs4'
 SUMMERNOTE_CONFIG = {
     'iframe': True,
     'empty': ('<p><br/></p>', '<p><br></p>'),
@@ -143,7 +140,7 @@ SUMMERNOTE_CONFIG = {
         ['height', ['height']],
         ['table', ['table']],
         ['insert', ['link', 'picture', 'video', 'hr', 'equation']],
-        ['view', ['fullscreen', 'codeview']],
+        ['view', ['fullscreen']],
         ['help', ['help']],
     ],
     'lang': None,
