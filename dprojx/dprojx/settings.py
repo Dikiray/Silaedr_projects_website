@@ -22,9 +22,9 @@ MEDIA_DIR = os.path.join(BASE_DIR,'media/')
 SECRET_KEY = 'ija0d&121)tp_x*)_1kyswan(=wav@#xk-i=y4qd@*5%#v=n&c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = false
+DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['dancing.pythonanywhere.com']
 
 # Application definition
 

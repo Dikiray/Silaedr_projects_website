@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.shortcuts import render
-from dappx.forms import UserForm,ProjectForm
+from dappx.forms import UserForm,ProjectForm,SortForm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
@@ -10,8 +10,13 @@ from django.contrib.auth.decorators import login_required
 from .models import ProjectInfo
 # Create your views here.
 def index(request):
+    direction = ""
+    if request.method == 'POST':
+        direction = dict(request.POST)["direction"][0]
+    if "Все" in direction:
+        direction = ""
     projects = ProjectInfo.objects.all()
-    return render(request,'dappx/index.html', {"projects":projects,})
+    return render(request,'dappx/index.html', {"projects":projects,"direction": direction})
 #user part
 @login_required
 def user_logout(request):
@@ -78,3 +83,7 @@ def project(request,name):
 def delete_project(request,name):
     ProjectInfo.objects.filter(project_name=name).delete()
     return HttpResponseRedirect(reverse('index'))
+
+def review(request):
+    projects = ProjectInfo.objects.all()
+    return render(request, 'dappx/review.html', {"projects":projects,})

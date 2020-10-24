@@ -1,30 +1,59 @@
 {% extends "dappx/base.html" %}
 {% block body_block %}
-      <section class="jumbotron jumbotron-fluid text-center" style="background-color:rgba(252, 252, 252 ,0.8)">
-        <div class="container">
-          <h1 class="jumbotron-heading">Проекты Силаэдра</h1>
-          <p class="lead text-muted">Проектные работы школьников <a href="http://1303fm.org/">классов "Силаэдр"</a>.</p>
-        </div>
-      </section>
-      <div class="album py-5" style="background-color:rgba(252, 252, 252 ,0.8)">
-        <div class="container">
-          {% for i in projects %}
-            {% if i.project_state == '1' %}
-            <div class="col-md-3">
-              <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" style="height: 225px; width: 100%" src="{{ i.project_picture }}">
-                <div class="card-body">
-                  <p class="card-text">{{ i.project_name }}</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <a href="http://dancing.pythonanywhere.com/dappx/project/{{ i.project_name }}/" class="btn btn-outline-dark">Смотреть</a>
-                    </div>
+<section class="jumbotron jumbotron-fluid text-center" style="background-color:rgba(252, 252, 252 ,0.8)">
+   <div class="container">
+      <h1 class="jumbotron-heading">Проекты Силаэдра</h1>
+      <p class="lead text-muted">Проектные работы школьников <a href="http://1303fm.org/">классов "Силаэдр"</a>.</p>
+   </div>
+</section>
+<div class="album py-5 style="font-size:17px"" style="background-color:rgba(252, 252, 252 ,0.8)">
+       <form method="POST" name="direction">
+        {% csrf_token %}
+        <label style="font-size:14px">Сортировать по направлению</label>
+        <select class="form-control" style="font-size:14px; width:200px" name="direction">
+               <option>Computer Science</option>
+               <option>Биоинформатика</option>
+               <option>Биология</option>
+               <option>География</option>
+               <option>История</option>
+               <option>Лингвистика</option>
+               <option>Литература</option>
+               <option>Математика</option>
+               <option>Медицина</option>
+               <option>Науки о Земле</option>
+               <option>Обществознание</option>
+               <option>Психология</option>
+               <option>Робототехника</option>
+               <option>Техника</option>
+               <option>Физика</option>
+               <option>Химия</option>
+               <option>Экология</option>
+               <option>Экономика</option>
+               <option>Все</option>
+            </select>
+        <input type="submit" class="btn btn-outline-dark" style="font-size:14px" value="Сортировать">
+   </form>
+   <br></br>
+   <div class="container">
+      {% for i in projects %}
+      {% if i.project_state == '1' and direction in i.project_direction %}
+      <div class="col-md-3">
+         <div class="card mb-4 shadow-sm">
+            <img class="card-img-top" style="height: 225px; width: 100%" src="{{ i.project_picture }}">
+            <div class="card-body">
+               <p class="card-text" style="font-size:12px">Название проекта:{{ i.project_name }}</p>
+               <hr>
+               <p class="card-text" style="font-size:12px">Направление проекта:{{ i.project_direction }}</p>
+               <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                     <a href="http://dancing.pythonanywhere.com/dappx/project/{{ i.project_name }}/" class="btn btn-outline-dark">Смотреть</a>
                   </div>
-                </div>
-                </div>
-                </div>
-            {% endif %}
-          {% endfor %}
-          </div>
-        </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+   </div>
+</div>
 {% endblock %}

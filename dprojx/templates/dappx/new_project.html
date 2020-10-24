@@ -1,41 +1,52 @@
 {% extends "dappx/base.html" %}
 {% block body_block %}
 <div class="album py-5 bg-light">
-  <div class="container">
-    <div class="jumbotron">
-      <h1>Зарегистрируйте ваш проект здесь</h1>
-        <form enctype="multipart/form-data" method="POST">
+   <div class="container">
+      <div class="jumbotron">
+         <h1>Зарегистрируйте ваш проект здесь</h1>
+         <form enctype="multipart/form-data" method="POST">
             {% csrf_token %}
             <input type="text" class="form-control" name="project_name" placeholder="Название проекта" style="font-size:14px">
             <input type="text" class="form-control" name="project_creators" placeholder="Авторы" style="font-size:14px">
+            <input type="text" class="form-control" name="project_root" placeholder="Научный руководитель" style="font-size:14px">
             <label for="sel1" style="font-size:14px">Направление вашего проекта:</label>
-            <select class="form-control" id="sel1" name="project_direction" style="font-size:14px">
-                <option>Computer Science</option>
-                <option>Биоинформатика</option>
-                <option>Биология</option>
-                <option>География</option>
-                <option>История</option>
-                <option>Лингвистика</option>
-                <option>Литература</option>
-                <option>Математика</option>
-                <option>Медицина</option>
-                <option>Науки о Земле</option>
-                <option>Обществознание</option>
-                <option>Психология</option>
-                <option>Робототехника</option>
-                <option>Техника</option>
-                <option>Физика</option>
-                <option>Химия</option>
-                <option>Экология</option>
-                <option>Экономика</option>
-             </select>
-             <label for="id_project_picture" style="font-size:14px">Картинка вашего проекта(желательно квадратная):</label>
-             <input type="file" name="project_picture" accept="image/*" style="font-size:14px">
-             <label style="font-size:14px">Текст вашего проекта:</label>
-             {{ project_form.project_text }}
-             <input type="submit" class="btn btn-outline-success" style="font-size:12px" value="Создать новый проект">
-        </form>
-    </div>
-  </div>
+            <select class="form-control" style="font-size:14px">
+               <option>Computer Science</option>
+               <option>Биоинформатика</option>
+               <option>Биология</option>
+               <option>География</option>
+               <option>История</option>
+               <option>Лингвистика</option>
+               <option>Литература</option>
+               <option>Математика</option>
+               <option>Медицина</option>
+               <option>Науки о Земле</option>
+               <option>Обществознание</option>
+               <option>Психология</option>
+               <option>Робототехника</option>
+               <option>Техника</option>
+               <option>Физика</option>
+               <option>Химия</option>
+               <option>Экология</option>
+               <option>Экономика</option>
+            </select>
+            <label for="id_project_picture" style="font-size:14px">Картинка вашего проекта(желательно квадратная):</label>
+            <input type="file" name="project_picture" accept="image/*" style="font-size:14px">
+            <label style="font-size:14px">Постановка задачи (здесь же нужно дать необходимые определения, а также можно рассказать, откуда взялась задача, кто вам ее дал или частью какой работы она является)</label>
+            {{ project_form.project_text_task }}
+            <label style="font-size:14px">Методы и инструменты (вкратце: как и с помощью чего вы решали задачу</label>
+            {{ project_form.project_text_methods }}
+            <label style="font-size:14px">Результаты (с иллюстрациями, приветствуется видео, ссылки на гитхаб и т.д.)</label>
+            {{ project_form.project_text_results }}
+            <label style="font-size:14px">Обсуждение (что эти результаты означают, как их интерпретировать, насколько им можно доверять)</label>
+            {{ project_form.project_text_discussions}}
+            <label style="font-size:14px">Выводы (очень кратко итог сделанного и “мораль работы”, т.е. ответ на вопрос “ну и че?”)</label>
+            {{ project_form.project_text_conclusions }}
+            <label style="font-size:14px">Награды проекта на внешних конкурсах</label>
+            {{ project_form.project_wins }}
+            <input type="submit" class="btn btn-outline-success" style="font-size:12px" value="Создать новый проект">
+         </form>
+      </div>
+   </div>
 </div>
 {% endblock %}

@@ -13,6 +13,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script> $(document).ready(function() {$('#summernote').summernote();}); </script>
+    <!-- Разрешаю команде по CTF "Poison Berries" взламывать этот сайт -->
   </head>
   <body>
     <header class="navbar navbar-expand bg-dark">
@@ -24,9 +25,11 @@
                 <li class="nav-item">
                     <a href="{% url 'index' %}" class="btn btn-dark" style="color:#F8F8FF; font-size:120%">Проекты Силаэдра</a>
                 </li>
-                <!--<li class="nav-item">
-                    <a href="{% url 'dappx:register' %}" class="btn btn-dark" style="color:#F8F8FF; font-size:120%">Регистрация</a>
-                </li>-->
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a href="{% url 'dappx:review' %}" class="btn btn-dark" style="color:#F8F8FF; font-size:120%">Проекты на рассмотрении</a>
+                        </li>
+                    {% endif %}
                     {% if user.is_authenticated %}
                         <li class="nav-item">
                             <a href="{% url 'dappx:create_new_project' %}" class="btn btn-dark" style="color:#F8F8FF; font-size:120%">Создать новый проект</a>
