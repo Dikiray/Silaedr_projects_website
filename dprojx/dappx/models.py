@@ -9,7 +9,6 @@ class ProjectInfo(models.Model):
     project_direction = models.CharField(max_length = 200, default = '')
     project_creators = models.CharField(max_length = 200, default = '')
     project_state = models.CharField(max_length = 1, default = '0')
-    project_wins = models.CharField(max_length = 200)
     project_name = models.CharField(max_length = 200)
     project_root = models.CharField(max_length = 200)
     project_text_task = SummernoteTextField(verbose_name="project text task")

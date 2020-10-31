@@ -11,6 +11,7 @@
         {% csrf_token %}
         <label style="font-size:14px">Сортировать по направлению</label>
         <select class="form-control" style="font-size:14px; width:200px" name="direction">
+               <option>Все</option>
                <option>Computer Science</option>
                <option>Биоинформатика</option>
                <option>Биология</option>
@@ -29,7 +30,6 @@
                <option>Химия</option>
                <option>Экология</option>
                <option>Экономика</option>
-               <option>Все</option>
             </select>
         <input type="submit" class="btn btn-outline-dark" style="font-size:14px" value="Сортировать">
    </form>

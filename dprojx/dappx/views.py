@@ -80,10 +80,6 @@ def project(request,name):
         if i.project_name == name:
             return render(request,'dappx/project.html', {'project':i})
 
-def delete_project(request,name):
-    ProjectInfo.objects.filter(project_name=name).delete()
-    return HttpResponseRedirect(reverse('index'))
-
 def review(request):
     projects = ProjectInfo.objects.all()
     return render(request, 'dappx/review.html', {"projects":projects,})
