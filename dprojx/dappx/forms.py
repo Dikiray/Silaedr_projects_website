@@ -4,7 +4,7 @@ from dappx.models import ProjectInfo
 class ProjectForm(forms.ModelForm):
     class Meta():
         model = ProjectInfo
-        fields = ('project_name', 'project_creators', 'project_direction', 'project_root','project_picture', 'project_text_task', 'project_text_methods', 'project_text_results', 'project_text_discussions', 'project_text_conclusions')
+        fields = ('project_name', 'project_creators', 'project_direction', 'project_root','project_picture', 'project_short', 'project_text')
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
     class Meta():

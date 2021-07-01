@@ -8,16 +8,7 @@
         <p style="font-size:17px">Авторы проекта:{{ project.project_creators }}</p>
         <br><br>
         <br>
-        <p style="font-size:17px">Постановка задачи:</p>
-        <p class="card-text">{{ project.project_text_task|safe }}</p>
-        <p style="font-size:17px">Методы и инструменты:</p>
-        <p class="card-text">{{ project.project_text_methods|safe }}</p>
-        <p style="font-size:17px">Результаты:</p>
-        <p class="card-text">{{ project.project_text_results|safe }}</p>
-        <p style="font-size:17px">Обсуждение:</p>
-        <p class="card-text">{{ project.project_text_discussions|safe }}</p>
-        <p style="font-size:17px">Выводы:</p>
-        <p class="card-text">{{ project.project_text_conclusions|safe }}</p>
+        <p class="card-text">{{ project.project_text|safe }}</p>
     </div>
   </div>
 </div>

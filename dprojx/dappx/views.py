@@ -15,7 +15,7 @@ def index(request):
         direction = dict(request.POST)["direction"][0]
     if "Все" in direction:
         direction = ""
-    projects = ProjectInfo.objects.all()
+    projects = ProjectInfo.objects.all
     return render(request,'dappx/index.html', {"projects":projects,"direction": direction})
 #user part
 @login_required
@@ -61,6 +61,7 @@ def create_new_project(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
             project_form = ProjectForm(data=request.POST)
+            print(project_form)
             if project_form.is_valid():
                 project = project_form.save()
                 project.project_picture = request.FILES['project_picture']
