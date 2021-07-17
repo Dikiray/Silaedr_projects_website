@@ -37,27 +37,29 @@
         <input type="submit" class="btn btn-outline-dark" style="font-size:14px" value="Отфильтровать">
    </form>
    <br></br>
-   <div class="container">
-      {% for i in projects %}
-      {% if i.project_state == '1' and direction in i.project_direction %}
-      <div class="col-md-3">
-         <div class="card mb-4 shadow-sm">
-            <img class="card-img-top" style="height: 225px; width: 100%" src="{{ i.project_picture }}">
-            <div class="card-body">
-               <p class="card-text" style="font-size:14px">Название проекта:{{ i.project_name }}</p>
-               <hr>
-               <p class="card-text" style="font-size:14px">Направление проекта:{{ i.project_direction }}</p>
-               <p class="card-text" style="font-size:14px">Краткое описание: {{ i.project_short|safe }}</p>
-               <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                     <a href="http://127.0.0.1:8000/dappx/project/{{ i.project_name }}/" class="btn btn-outline-dark">Смотреть</a>
+   <div class="album py-5 style="font-size:17px"" style="background-color:rgba(252, 252, 252 ,0.8)">
+     <div class="container">
+       {% for i in projects %}
+       {% if i.project_state == '1' and direction in i.project_direction %}
+       <div class="col-md-3">
+          <div class="card mb-4 shadow-sm">
+              <img class="card-img-top" style="height: 225px; width: 100%" src="{{ i.project_picture }}">
+              <div class="card-body">
+                <p class="card-text" style="font-size:14px">Название проекта:{{ i.project_name }}</p>
+                <hr>
+                <p class="card-text" style="font-size:14px">Направление проекта:{{ i.project_direction }}</p>
+                <p class="card-text" style="font-size:14px">Краткое описание: {{ i.project_short|safe }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a href="http://127.0.0.1:8000/dappx/project/{{ i.project_name }}/" class="btn btn-outline-dark">Смотреть</a>
+                    </div>
                   </div>
-               </div>
+                </div>
+              </div>
             </div>
-         </div>
-      </div>
-      {% endif %}
+        {% endif %}
       {% endfor %}
    </div>
+ </div>
 </div>
 {% endblock %}
