@@ -3,13 +3,43 @@
 <div class="album py-5 bg-light">
   <div class="container">
     <div class="jumbotron">
-        <p style="font-size:17px">Название проекта:{{ project.project_name }}</p>
-        <p style="font-size:17px">Направление:{{ project.project_direction }}</p>
-        <p style="font-size:17px">Авторы проекта:{{ project.project_creators }}</p>
+        <p style="font-size:16px">Название проекта:{{ project.project_name }}</p>
+        <p style="font-size:16px">Направление:{{ project.project_direction }}</p>
+        <p style="font-size:16px">Авторы проекта:{{ project.project_creators }}</p>
         <br><br>
         <br>
         <p class="card-text">{{ project.project_text|safe }}</p>
     </div>
+    {% if user.is_authenticated and user.is_staff %}
+      <form method="POST">
+        {% csrf_token %}
+        <label for="sel1" style="font-size:16px">Одобряете ли вы этот проект к отоброжению на главной странице</label>
+        <div style="display:inline-block">
+          <select class="form-control" name="project_state" style="font-size:16px">
+            <option value = "1" style="color:green">Да</option>
+            <option value = "0" style="color:red">Нет</option>
+          </select>
+        </div>
+        <input type="submit" class="btn btn-outline-secondary" style="font-size:16px" value="Подтвердить">
+      </form>
+    {% endif %}
+    {% if user.is_authenticated and user == project.project_acount %}
+      <button type="button" data-toggle="modal" data-target="#exampleModal" class='btn btn-danger' style='font-size:16px'>Удалить проект</button>
+      <a type="button" class='btn btn-secondary' style='font-size:16px' href='http://127.0.0.1:8000/dappx/change_project/{{ project.project_name }}/'>Редактировать проект</a>
+      <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="font-size:400%">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-body" style="color:red">
+              ВЫ ТОЧНО УВЕРЕНЫ ЧТО ХОТИТЕ УДАЛИТЬ ПРОЕКТ
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" style="font-size:20px"data-dismiss="modal">Нет</button>
+              <a type="button" class="btn btn-danger" style="font-size:20px" href="http://127.0.0.1:8000/dappx/delete/{{ project.project_name }}/">Да</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
   </div>
 </div>
 {% endblock %}

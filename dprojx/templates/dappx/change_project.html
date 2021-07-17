@@ -1,0 +1,45 @@
+{% extends "dappx/base.html" %}
+{% block body_block %}
+<div class="album py-5 bg-light">
+   <div class="container">
+      <div class="jumbotron">
+         <form enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            <label style="font-size:16px">Название проекта</label>
+            <input type="text" class="form-control" name="project_name" value="{{ project_form.project_name.value }}" style="font-size:16px">
+            <label style="font-size:16px">Создатели проекта</label>
+            <input type="text" class="form-control" name="project_creators" value="{{ project_form.project_creators.value }}" style="font-size:16px">
+            <label style="font-size:16px">Научный руководитель</label>
+            <input type="text" class="form-control" name="project_root" value="{{project_form.project_root.value }}" style="font-size:16px">
+            <label for="sel1" style="font-size:16px">Направление вашего проекта:</label>
+            <select class="form-control" name="project_direction" style="font-size:16px">
+               <option selected value="{{ project_form.project_direction.value }}">{{ project_form.project_direction.value }}</option>
+               <option>Computer Science</option>
+               <option>Биоинформатика</option>
+               <option>Биология</option>
+               <option>География</option>
+               <option>История</option>
+               <option>Лингвистика</option>
+               <option>Литература</option>
+               <option>Математика</option>
+               <option>Медицина</option>
+               <option>Науки о Земле</option>
+               <option>Обществознание</option>
+               <option>Психология</option>
+               <option>Робототехника</option>
+               <option>Техника</option>
+               <option>Физика</option>
+               <option>Химия</option>
+               <option>Экология</option>
+               <option>Экономика</option>
+            </select>
+            <label style="font-size:16px">Краткое описание вашего проекта которое будет на главной странице(Желательно уложиться в 200 символов)</label>
+            {{ project_form.project_short }}
+            <label style="font-size:16px">Полный текст вашего проекта</label>
+            {{ project_form.project_text }}
+            <input type="submit" class="btn btn-outline-success" style="font-size:16px" value="Отредактировать">
+         </form>
+      </div>
+   </div>
+</div>
+{% endblock %}

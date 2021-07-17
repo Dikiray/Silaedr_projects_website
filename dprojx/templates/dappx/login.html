@@ -2,7 +2,7 @@
 {% block body_block %}
   <div class="container col-md-5" style="position: relative; left: 50%; transform: translate(-50%, 0);">
     <div class="album py-5 bg-light">
-      <h1 style="font-size:40px; text-align: center;">Login here</h1>
+      <h1 style="font-size:40px; text-align: center;">Войдите здесь</h1>
         <form method="post" action="{% url 'dappx:user_login' %}">
           {% csrf_token %}
           <input type="text" class="form-control col-8" name="username" placeholder="Логин" style="height:35px; font-size:15px;position: relative; left: 50%; transform: translate(-50%, 0);">

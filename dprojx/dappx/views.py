@@ -61,9 +61,9 @@ def create_new_project(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
             project_form = ProjectForm(data=request.POST)
-            print(project_form)
             if project_form.is_valid():
                 project = project_form.save()
+                project.project_acount = request.user
                 project.project_picture = request.FILES['project_picture']
                 project.save()
                 return HttpResponseRedirect(reverse('index'))
@@ -75,12 +75,42 @@ def create_new_project(request):
     else:
         return HttpResponse("Вы не вошли в акаунт")
 
-def project(request,name):
-    project = ProjectInfo.objects.all()
-    for i in project:
-        if i.project_name == name:
-            return render(request,'dappx/project.html', {'project':i})
+def project(request, name):
+    project = ProjectInfo.objects.filter(project_name=name).first()
+    if request.method == "POST":
+        if request.user.is_authenticated and request.user.is_staff:
+            project.project_state = request.POST['project_state']
+            project.save()
+            return HttpResponseRedirect(reverse("index"))
+    return render(request,'dappx/project.html', {'project':project})
+
+def change_project(request, name):
+    dict_project = ProjectInfo.objects.filter(project_name=name).values()[0]
+    project = ProjectInfo.objects.filter(project_name=name).first()
+    if request.user.is_authenticated and project.project_acount == request.user:
+        if request.method == 'POST':
+            project_form = ProjectForm(data=request.POST)
+            if project_form.is_valid():
+                project.project_creators = project_form['project_creators'].value()
+                project.project_name = project_form['project_name'].value()
+                project.project_root = project_form['project_root'].value()
+                project.project_direction = project_form['project_direction'].value()
+                project.project_short = project_form['project_short'].value()
+                project.project_text = project_form['project_text'].value()
+                project.save()
+                return HttpResponseRedirect(reverse('index'))
+            else:
+                return HttpResponse("Форма была не полностью заполнена")
+        else:
+            project_form = ProjectForm(data=dict_project)
+            return render(request,'dappx/change_project.html',{'project_form':project_form,})
 
 def review(request):
     projects = ProjectInfo.objects.all()
     return render(request, 'dappx/review.html', {"projects":projects,})
+
+def delete_project(request, name):
+    project = ProjectInfo.objects.filter(project_name=name)
+    if request.user.username == project[0].project_acount.username:
+        project[0].delete()
+    return HttpResponseRedirect(reverse('index'))

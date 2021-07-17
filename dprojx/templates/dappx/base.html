@@ -23,25 +23,25 @@
                     <img src="/media/silaeder.png" width="50" height="50" class="d-inline-block align-top" alt="">
                 </li>
                 <li class="nav-item">
-                    <a href="{% url 'index' %}" class="btn btn-dark" style="color:#F8F8FF; font-size:120%">Проекты Силаэдра</a>
+                    <a href="{% url 'index' %}" class="btn btn-dark" style="color:#F8F8FF; font-size:140%">Проекты Силаэдра</a>
                 </li>
                     {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a href="{% url 'dappx:review' %}" class="btn btn-dark" style="color:#F8F8FF; font-size:120%">Проекты на рассмотрении</a>
+                            <a href="{% url 'dappx:review' %}" class="btn btn-dark" style="color:#F8F8FF; font-size:140%">Проекты на рассмотрении</a>
                         </li>
                     {% endif %}
                     {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a href="{% url 'dappx:create_new_project' %}" class="btn btn-dark" style="color:#F8F8FF; font-size:120%">Создать новый проект</a>
+                            <a href="{% url 'dappx:create_new_project' %}" class="btn btn-dark" style="color:#F8F8FF; font-size:140%">Создать новый проект</a>
                         </li>
                     {% endif %}
                     {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a href="{% url 'logout' %}" class="btn btn-dark" style="color:#F8F8FF; font-size:120%">Выйти</a>
+                            <a href="{% url 'logout' %}" class="btn btn-dark" style="color:#F8F8FF; font-size:140%">Выйти</a>
                         </li>
                     {% else %}
                         <li class="nav-item">
-                            <a href="{% url 'dappx:user_login' %}" class="btn btn-dark" style="color:#F8F8FF; font-size:120%">Войти</a>
+                            <a href="{% url 'dappx:user_login' %}" class="btn btn-dark" style="color:#F8F8FF; font-size:140%">Войти</a>
                         </li>
                     {% endif %}
             </ul>
