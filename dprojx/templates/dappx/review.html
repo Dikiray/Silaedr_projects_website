@@ -9,15 +9,15 @@
    <div class="container">
       {% for i in projects %}
       {% if i.project_state == '0' %}
-      <div class="col-md-3">
+      <div class="col-md-4">
          <div class="card mb-4 shadow-sm">
-            <img class="card-img-top" style="height: 225px; width: 100%" src="{{ i.project_picture }}">
+            <img class="card-img-top" style="height: 100%; width: 100%" src="./media/{{ i.project_picture }}">
             <div class="card-body">
                <p class="card-text" style="font-size:14px">Название проекта:{{ i.project_name }}</p>
                <p class="card-text" style="font-size:14px">Направление проекта:{{ i.project_direction }}</p>
                <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                     <a href="http://127.0.0.1:8000/dappx/project/{{ i.project_name }}/" class="btn btn-outline-dark">Смотреть</a>
+                     <a href="http://127.0.0.1:8000/dappx/project/{{ i.project_name }}/" class="btn btn-outline-dark" style="font-size:14px">Смотреть</a>
                   </div>
                </div>
             </div>

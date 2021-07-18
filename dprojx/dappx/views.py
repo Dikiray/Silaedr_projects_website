@@ -9,14 +9,50 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from .models import ProjectInfo
 # Create your views here.
+def en_views(request):
+    direction = ""
+    search = ""
+    all_projects = list(ProjectInfo.objects.all())
+    projects = []
+    if request.method == 'POST':
+        print(request.POST)
+        if "direction" in dict(request.POST).keys():
+            direction = dict(request.POST)["direction"][0]
+            if "Все" in direction:
+                direction = ""
+        if "search" in dict(request.POST).keys():
+            search = request.POST["search"].lower()
+        for i in all_projects:
+            if i.project_state == "1" and direction in i.project_direction and i.project_iseng == "1":
+                if search in i.project_name.lower() or search in i.project_direction.lower() or search in i.project_text.lower() or search in i.project_creators.lower():
+                    projects.append(i)
+    else:
+        for i in all_projects:
+            if i.project_state == "1" and i.project_iseng == "1":
+                projects.append(i)
+    return render(request,'dappx/en_index.html', {"projects":projects})
 def index(request):
     direction = ""
+    search = ""
+    all_projects = list(ProjectInfo.objects.all())
+    projects = []
     if request.method == 'POST':
-        direction = dict(request.POST)["direction"][0]
-    if "Все" in direction:
-        direction = ""
-    projects = ProjectInfo.objects.all
-    return render(request,'dappx/index.html', {"projects":projects,"direction": direction})
+        print(request.POST)
+        if "direction" in dict(request.POST).keys():
+            direction = dict(request.POST)["direction"][0]
+            if "Все" in direction:
+                direction = ""
+        if "search" in dict(request.POST).keys():
+            search = request.POST["search"].lower()
+        for i in all_projects:
+            if i.project_state == "1" and direction in i.project_direction:
+                if search in i.project_name.lower() or search in i.project_direction.lower() or search in i.project_text.lower() or search in i.project_creators.lower():
+                    projects.append(i)
+    else:
+        for i in all_projects:
+            if i.project_state == "1":
+                projects.append(i)
+    return render(request,'dappx/index.html', {"projects":projects})
 #user part
 @login_required
 def user_logout(request):
@@ -64,7 +100,9 @@ def create_new_project(request):
             if project_form.is_valid():
                 project = project_form.save()
                 project.project_acount = request.user
+                project.project_short = request.POST['project_short']
                 project.project_picture = request.FILES['project_picture']
+                project.project_iseng = request.POST['project_iseng']
                 project.save()
                 return HttpResponseRedirect(reverse('index'))
             else:
@@ -83,6 +121,15 @@ def project(request, name):
             project.save()
             return HttpResponseRedirect(reverse("index"))
     return render(request,'dappx/project.html', {'project':project})
+
+def en_project(request, name):
+    project = ProjectInfo.objects.filter(project_name=name).first()
+    if request.method == "POST":
+        if request.user.is_authenticated and request.user.is_staff:
+            project.project_state = request.POST['project_state']
+            project.save()
+            return HttpResponseRedirect(reverse("index"))
+    return render(request,'dappx/en_project.html', {'project':project})
 
 def change_project(request, name):
     dict_project = ProjectInfo.objects.filter(project_name=name).values()[0]

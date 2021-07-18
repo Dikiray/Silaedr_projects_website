@@ -25,6 +25,9 @@
                 <li class="nav-item">
                     <a href="{% url 'index' %}" class="btn btn-dark" style="color:#F8F8FF; font-size:140%">Проекты Силаэдра</a>
                 </li>
+                <li class="nav-item">
+                    <a href="{% url 'dappx:en_index' %}" class="btn btn-dark" style="color:#F8F8FF; font-size:140%">English version</a>
+                </li>
                     {% if user.is_authenticated %}
                         <li class="nav-item">
                             <a href="{% url 'dappx:review' %}" class="btn btn-dark" style="color:#F8F8FF; font-size:140%">Проекты на рассмотрении</a>

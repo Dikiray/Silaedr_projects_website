@@ -32,10 +32,15 @@
             </select>
             <label for="id_project_picture" style="font-size:14px">Картинка вашего проекта(желательно квадратная):</label>
             <input type="file" name="project_picture" accept="image/*" style="font-size:14px">
-            <label style="font-size:14px">Краткое описание вашего проекта которок=е будет на главной странице(Желательно уложиться в 200 символов)</label>
-            {{ project_form.project_short }}
+            <label style="font-size:14px">Краткое описание вашего проекта которое будет на главной странице(Надо уложиться в 300 символов)</label>
+            <input type="text" class="form-control" name="project_short" style="font-size:14px; width:100%">
             <label style="font-size:14px">Полный текст вашего проекта</label>
             {{ project_form.project_text }}
+            <label style="font-size:14px">Является ли этот текст английсской интеропритацией вашего проекта</label>
+            <select class=form-control name='project_iseng' style="font-size:14px">
+              <option value = "1" style="color:green">Да</option>
+              <option value = "0" style="color:red">Нет</option>
+            </select>
             <input type="submit" class="btn btn-outline-success" style="font-size:12px" value="Создать новый проект">
          </form>
       </div>

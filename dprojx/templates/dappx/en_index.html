@@ -2,8 +2,8 @@
 {% block body_block %}
 <section class="jumbotron jumbotron-fluid text-center" style="background-color:rgba(252, 252, 252 ,0.8)">
    <div class="container">
-      <h1 class="jumbotron-heading">Проекты Силаэдра</h1>
-      <p class="lead text-muted">Проектные работы школьников <a href="http://1303fm.org/">классов "Силаэдр"</a>.</p>
+      <h1 class="jumbotron-heading">Silaeder projects</h1>
+      <p class="lead text-muted">Schoolchildren's projects <a href="http://1303fm.org/">"Silaeder" classes</a>.</p>
    </div>
 </section>
 <div class="jumbotron jumbotron-fluid text-center" style="background-color:rgba(252, 252, 252 ,0.8)">
@@ -17,11 +17,11 @@
                </div>
                <!--end of col-->
                <div class="col">
-                  <input class="form-control form-control-lg form-control-borderless" type="search" name="search" style="font-size:14px"placeholder="Поиск по проектам">
+                  <input class="form-control form-control-lg form-control-borderless" type="search" name="search" style="font-size:14px"placeholder="Find a project by key words">
                </div>
                <!--end of col-->
                <div class="col-auto">
-                  <button class="btn btn-outline-dark" type="submit" style="font-size:14px">Найти</button>
+                  <button class="btn btn-outline-dark" type="submit" style="font-size:14px">search</button>
                </div>
                <!--end of col-->
             </div>
@@ -36,7 +36,7 @@
           <div class="card-body row no-gutters align-items-center">
             <div class="col-auto">
               <i class="fas fa-search h4 text-body"></i>
-              <label style="font-size:14px">Отфильтровать по направлению:</label>
+              <label style="font-size:14px">Filter by direction:</label>
             </div>
             <div class="col">
               <select class="form-control form-control-lg form-control-borderless" style="font-size:14px;" name="direction">
@@ -62,7 +62,7 @@
               </select>
             </div>
             <div class="col-auto">
-              <input type="submit" class="btn btn-outline-dark" style="font-size:14px" value="Отфильтровать">
+              <input type="submit" class="btn btn-outline-dark" style="font-size:14px" value="filter">
             </div>
           </div>
         </form>
@@ -75,15 +75,15 @@
    {% for i in projects %}
     <div class="col-md-4">
         <div class="card mb-4 shadow-sm">
-          <img class="card-img-top" style="height: 100%; width: 100%" src="{{ i.project_picture }}">
+          <img class="card-img-top" style="height: 100%; width: 100%" src="/media/{{ i.project_picture }}">
           <div class="card-body">
-              <p class="card-text" style="font-size:14px">Название:{{ i.project_name }}</p>
+              <p class="card-text" style="font-size:14px">name:{{ i.project_name }}</p>
               <hr>
-              <p class="card-text" style="font-size:14px">Направление{{ i.project_direction }}</p>
-              <p class="card-text" style="font-size:14px">Краткое описание: {{ i.project_short }}</p>
+              <p class="card-text" style="font-size:14px">direction:{{ i.project_direction }}</p>
+              <p class="card-text" style="font-size:14px">Short description: {{ i.project_short }}</p>
               <div class="d-flex justify-content-between align-items-center">
                <div class="btn-group">
-                  <a href="http://127.0.0.1:8000/dappx/project/{{ i.project_name }}/" class="btn btn-outline-dark" style="font-size:14px">Смотреть</a>
+                  <a href="http://127.0.0.1:8000/dappx/en_project/{{ i.project_name }}/" class="btn btn-outline-dark" style="font-size:14px">view</a>
                </div>
             </div>
          </div>
