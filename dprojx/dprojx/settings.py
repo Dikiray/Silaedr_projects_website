@@ -19,7 +19,7 @@ STATIC_ROOT = "/home/Dancing/Silaedr_projects_website/static"
 STATIC_DIR = os.path.join(BASE_DIR,'static/')
 MEDIA_DIR = os.path.join(BASE_DIR,'media/')
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ija0d&121)tp_x*)_1kyswan(=wav@#xk-i=y4qd@*5%#v=n&c'
+SECRET_KEY = ''
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
